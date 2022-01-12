@@ -24,14 +24,11 @@ function move(){
         step_x = - step_x
         wr += 1
         text_r.text(wr)
-        center_ball()
     }
     if(x > WIDTH-10){
         step_x = - step_x
         wl += 1
         text_l.text(wl)
-        center_ball()
-        
     }
     if(y < 10){
         step_y = - step_y
@@ -50,19 +47,25 @@ function move(){
         step_x = -step_x
         x = racet2.x() - 20
     }
-    if(wl == 1 || wr == 1){
-    if(is_start == true){
-        clearInterval(interval)
+    if(wl == 2 || wr == 2){
         center_ball()
-        is_start = false
-    }
-    alert("the win is " + racet1.fill())
-    wl = 0
-    wr = 0
-    racet1.move(15, HEIGHT/2-40)
-    racet2.move(WIDTH-30, HEIGHT/2-40)
-    text_l.text(wl)
-    text_r.text(wr)
+        if(is_start == true){
+            clearInterval(interval)
+            is_start = false
+        }
+        if(wr == 2){
+            alert("The win is " + racet2.fill())
+        }
+        if(wl == 2){
+            alert("The win is " + racet1.fill())
+        }
+        wl = 0
+        wr = 0
+        racet1.move(15, HEIGHT/2-40)
+        racet2.move(WIDTH-30, HEIGHT/2-40)
+        text_l.text(wl)
+        text_r.text(wr)
+        return//В данном случае останавливаем работу функции move, чтобы мячик вернулся в центр карты и больше не двигался
     }
     ball.cx(x)
     ball.cy(y)
